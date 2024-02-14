@@ -1,0 +1,143 @@
+.App {
+  background-color: #27a7ca;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 25px;
+  color: #f4eeea;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 5px;
+}
+
+.description {
+  font-size: 12px;
+  margin-top: 0px;
+  color: #816c5e;
+}
+
+button {
+  margin: 5px;
+  padding: 0;
+  border: none;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 3px;
+}
+
+.add-button {
+  width: 156px;
+  height: 60px;
+  background: url('/public/add.png') no-repeat;
+  display: inline-block;
+}
+
+.add-button:hover {
+  background: url('/public/add_hover.png') no-repeat;
+}
+
+.pay-button {
+  width: 156px;
+  height: 60px;
+  background: url('/public/pay.png') no-repeat;
+  display: inline-block;
+}
+
+.pay-button:hover {
+  background: url('/public/pay_hover.png') no-repeat;
+}
+
+.menu-background {
+  position: fixed;
+  z-index: 10;
+  top: 0px;
+  left: 0px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
+
+.menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  border: 4px solid rgb(23, 62, 118);
+  width: 50%;
+  height: 70%;
+  background-color: black;
+  color: white
+}
+
+.menu-item {
+  margin: 1px;
+}
+
+input {
+  margin-bottom: 2px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.text-button {
+  border-radius: 6px;
+  width: 50px;
+  background-color: rgb(49, 164, 206);
+  color: white;
+}
+
+.text-button:hover {
+  background-color: rgb(52, 68, 209);
+}
+
+ul {
+  text-align: center;
+  margin: 0px;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  padding: .5rem;
+  margin: 2px;
+  color: #816c5e;
+  font-size: 12px;
+}
+
+li::before {
+  content: "";
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  background: url('/public/bullet.png') no-repeat;
+}
+
+.participant-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
