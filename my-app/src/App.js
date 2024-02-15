@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import './App.css';
-import AddMenu from './AddMenu';
-import ParticipantList from './ParticipantList';
-import ResultScreen from './ResultScreen';
+import AddMenu from './components/AddMenu';
+import ParticipantList from './components/ParticipantList';
+import ResultScreen from './components/ResultScreen';
 
 function App() {
   const [id, setId] = useState(0);
@@ -25,12 +25,12 @@ function App() {
       let person = '';
       let maxScore = -1;
       // For each person, compute a score. The person with the greatest score will pay. Ties are broken with a coin toss.
-      for (let i = 0; i < participants.length; i++) {
-        const score = computeScore(participants[i]);
+      for (let i = 0; i < canPay.length; i++) {
+        const score = computeScore(canPay[i]);
         if (score >= maxScore) {
           const rand = Math.floor(Math.random() * 2);
           if (score > maxScore || rand === 1) {
-            person = participants[i]['name'];
+            person = canPay[i]['name'];
           }
           maxScore = score; 
         } 
