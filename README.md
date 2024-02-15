@@ -23,6 +23,7 @@ npm start
 
 1. Once you run npm start, you can interact with the program in your browser.
 2. To add a participant, click the ADD button and input the participant's data, which includes their name, budget, the price of their chosen drink, and how many times they have paid in the past. If no data or invalid input is given for a specific value, then default values will be used (empty string for strings and 0 for numbers). 
+
 ![Screenshot](screenshots/adding.png)
 3. To remove a participant, you can click on their information in the participant's list.
 4. Once you are ready, you can click on the pay button to view the results.
