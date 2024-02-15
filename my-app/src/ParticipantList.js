@@ -1,8 +1,9 @@
 
-function ParticipantList({participants, removeParticipant}) {
+function ParticipantList({participants, removeParticipant, total}) {
     return (
         <div className='participant-list'>
             <h3>Participants</h3>
+            <h5>{`Total: $${Number(total).toFixed(2)}`}</h5>
             <ul>
                 {participants.map((info, idx) => (
                     <li 
