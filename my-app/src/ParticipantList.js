@@ -1,4 +1,3 @@
-
 function ParticipantList({participants, removeParticipant, total}) {
     return (
         <div className='participant-list'>
