@@ -46,11 +46,11 @@ function App() {
       </header>
       <div className='buttons'>
         <button
-          className='add-button'
+          className='add-button img-button'
           onClick={() => setShowAdd(true)}
         ></button>
         <button
-          className='pay-button'
+          className='pay-button img-button'
           onClick={() => {
             setChosen(choosePersonToPay());
             setShowResult(true);
