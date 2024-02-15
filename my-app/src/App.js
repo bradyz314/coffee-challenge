@@ -9,7 +9,7 @@ function App() {
   const [participants, setParticipants] = useState([]);
   const [total, setTotal] = useState(0);
   const [showAdd, setShowAdd] = useState(false);
-  const [showResult, setShowResult] = useState(true);
+  const [showResult, setShowResult] = useState(false);
   const [chosen, setChosen] = useState('');
   // Compute a score using their budget, drinkPrice, and timesPaid.
   const computeScore = (info) => {
