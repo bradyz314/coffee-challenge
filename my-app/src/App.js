@@ -2,10 +2,42 @@ import { useState } from 'react'
 import './App.css';
 import AddMenu from './AddMenu';
 import ParticipantList from './ParticipantList';
+import ResultScreen from './ResultScreen';
 
 function App() {
+  const [id, setId] = useState(0);
   const [participants, setParticipants] = useState([]);
+  const [total, setTotal] = useState(0);
   const [showAdd, setShowAdd] = useState(false);
+  const [showResult, setShowResult] = useState(true);
+  const [chosen, setChosen] = useState('');
+  // Compute a score using their budget, drinkPrice, and timesPaid.
+  const computeScore = (info) => {
+    return 0.15 * info['budget'] + 0.5 * info['drinkPrice'] + Math.exp(2 / (info['timesPaid'] + 1))
+  }
+  // Function to choose the person to pay
+  const choosePersonToPay = () => {
+    // Filter out people whose budget cannot cover the total
+    const canPay = participants.filter((info) => info['budget'] >= total);
+    if (canPay.length === 0) {
+      return null;
+    } else {
+      let person = '';
+      let maxScore = -1;
+      // For each person, compute a score. The person with the greatest score will pay. Ties are broken with a coin toss.
+      for (let i = 0; i < participants.length; i++) {
+        const score = computeScore(participants[i]);
+        if (score >= maxScore) {
+          const rand = Math.floor(Math.random() * 2);
+          if (score > maxScore || rand === 1) {
+            person = participants[i]['name'];
+          }
+          maxScore = score; 
+        } 
+      }
+      return person;
+    }
+  }
   return (
     <div className="App">
       <header>
@@ -17,14 +49,25 @@ function App() {
           className='add-button'
           onClick={() => setShowAdd(true)}
         ></button>
-        <button className='pay-button'></button>
+        <button
+          className='pay-button'
+          onClick={() => {
+            setChosen(choosePersonToPay());
+            setShowResult(true);
+          }}
+        ></button>
       </div>
-      {showAdd && <AddMenu setShow={setShowAdd} addParticipant={(info) => setParticipants([...participants, info])} />}
-      <ParticipantList participants={participants} removeParticipant={(info) => {
-        setParticipants(participants.filter((curr) => (curr['name'] !== info['name'] 
-                                      && curr['budget'] !== info['budget']
-                                      && curr['drinkPrice'] !== info['drinkPrice']
-                                      && curr['timesPaid'] !== info['timesPaid'])))}}/>
+      {showAdd && <AddMenu setShow={setShowAdd} addParticipant={(info) => {
+        info['id'] = id;
+        setId(id + 1);
+        setParticipants([...participants, info]);
+        setTotal(total + Number(info['drinkPrice']));
+      }} />}
+      {showResult && <ResultScreen setShow={() => setShowResult(false)} name={chosen}/>}
+      <ParticipantList participants={participants} total={total} removeParticipant={(info) => {
+        setParticipants(participants.filter((curr) => (curr['id'] !== info['id'])));
+        setTotal(total - Number(info['drinkPrice']));
+      }} />
     </div>
   );
 }
