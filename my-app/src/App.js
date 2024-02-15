@@ -13,7 +13,7 @@ function App() {
   const [chosen, setChosen] = useState('');
   // Compute a score using their budget, drinkPrice, and timesPaid.
   const computeScore = (info) => {
-    return 0.15 * info['budget'] + 0.5 * info['drinkPrice'] + Math.exp(2 / (info['timesPaid'] + 1))
+    return (0.25 * info['budget'] + 0.6 * info['drinkPrice']) / (info['timesPaid'] + 1);
   }
   // Function to choose the person to pay
   const choosePersonToPay = () => {
