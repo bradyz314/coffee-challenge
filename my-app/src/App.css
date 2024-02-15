@@ -51,9 +51,14 @@ button {
   margin: 3px;
 }
 
-.add-button {
+.img-button,
+.img-button:hover {
+  background-size: 156px 60px;
   width: 156px;
   height: 60px;
+}
+
+.add-button {
   background: url('/public/add.png') no-repeat;
   display: inline-block;
 }
@@ -63,8 +68,6 @@ button {
 }
 
 .pay-button {
-  width: 156px;
-  height: 60px;
   background: url('/public/pay.png') no-repeat;
   display: inline-block;
 }
@@ -166,4 +169,64 @@ li::before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+@media(max-width:1600px) {
+  h1 {
+    font-size: 75px;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 50px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+
+  h4 {
+    font-size: 40px;
+  }
+
+  h5 {
+    font-size: 30px;
+  }
+
+  h6 {
+    font-size: 25px;
+  }
+
+  .description {
+    font-size: 25px;
+  }
+
+  .img-button,
+  .img-button:hover {
+    background-size: 312px 120px;
+    width: 312px;
+    height: 120px;
+  }
+
+  .text-button {
+    width: 75;
+    height: 25px;
+  }
+
+  .result-menu {
+    border: 6px solid rgb(23, 62, 118);
+    width: 40%;
+    height: 40%;
+    background-color: black;
+    color: white
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    margin: 5px;
+    font-size: 25px;
+  }
 }
